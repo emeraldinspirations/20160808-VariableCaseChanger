@@ -24,7 +24,7 @@
  * Once the variable name is decoded, it is outputed in either the supplied
  *  convention, or the next in the list of supplied conventions.  When no
  *  conventions are supplied the default list of conventions is used.
- *
+ * 
  * The default list of conventions is:
  *  - camelCaseA          (c)
  *  - CamelCaseB          (C)
@@ -33,7 +33,6 @@
  *  - ALL-CAPS-HYPHEN     (H)
  *  - no-caps-hyphen      (h)
  * 
-                                                                                |
  * For single word variable names, unless the IGNORE_SINGLE_WORD_SCENARIO (i)
  *  flag is passed, the list becomes
  *  - ALLCAPS
@@ -42,8 +41,47 @@
  */
 class variableCaseChanger {
   
-  const $KNOWN_DELIMITER_ARRAY = ['_', '-'];
+  const CONV_CAMEL_CASE_A                   = 'c';
+  const CONV_CAMEL_CASE_B                   = 'C';
+  const CONV_ALL_CAPS_UNDERSCORE            = 'U';
+  const CONV_NO_CAPS_UNDERSCORE             = 'u';
+  const CONV_ALL_CAPS_HYPHEN                = 'H';
+  const CONV_NO_CAPS_HYPHEN                 = 'h';
+  const FLAG_IGNORE_SINGLE_LETTER_SCENARIO  = 'I';
+  const FLAG_IGNORE_SINGLE_WORD_SCENARIO    = 'i';
 
+  
+  static $KNOWN_DELIMITER_ARRAY             = ['_', '-'];
+  
+  protected $_ToggleOrderArray              = [
+    CONV_CAMEL_CASE_A,
+    CONV_CAMEL_CASE_B,
+    CONV_ALL_CAPS_UNDERSCORE,
+    CONV_NO_CAPS_UNDERSCORE,
+    CONV_ALL_CAPS_HYPHEN,
+    CONV_NO_CAPS_HYPHEN
+  ];
+  
+  protected $_IGNORE_SINGLE_LETTER_SCENARIO = FALSE;
+  protected $_IGNORE_SINGLE_WORD_SCENARIO   = FALSE;
+  
+  
+  static function setIfNotNull(&$vParam, $vValue) {
+    if(!isnull($vValue)) {
+      $vParam = $vValue;
+    }
+  }
+
+  public function __construct(
+    $vVariableName, $vToggleOrderArray = NULL,
+    $vIgnoreSingleLetterScenario = FALSE, $vIgnoreSingleWordScenario = FALSE
+  ) {
+    
+    
+  
+  }
+  
+  // OLD CODE
   static function strposArray($vHaystack, $vNeedleArray = []) {
     
     foreach($vNeedleArray as $pNeedle) {
@@ -89,4 +127,3 @@ class variableCaseChanger {
   }
   
 }
-
