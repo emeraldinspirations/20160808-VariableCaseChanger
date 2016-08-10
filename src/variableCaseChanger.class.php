@@ -62,8 +62,8 @@ class variableCaseChanger {
     CONV_NO_CAPS_HYPHEN
   ];
   
-  protected $_IGNORE_SINGLE_LETTER_SCENARIO = FALSE;
-  protected $_IGNORE_SINGLE_WORD_SCENARIO   = FALSE;
+  protected $_ignoreSingleLetterScenario    = FALSE;
+  protected $_ignoreSingleWordScenario      = FALSE;
   
   
   static function setIfNotNull(&$vParam, $vValue) {
@@ -71,14 +71,54 @@ class variableCaseChanger {
       $vParam = $vValue;
     }
   }
+  
+  protected static function charDelimiter($vChar) {
+    return in_array($vChar, self::KNOWN_DELIMITER_ARRAY);
+  }
+  
+  static function getCharCase($vChar) {
+    
+    if(ctype_alpha($vChar)) {
+      if(ctype_upper($vChar)) {
+        return MB_CASE_UPPER;
+      } else {
+        return MB_CASE_LOWER;
+      }
+    }
 
+    return FALSE;
+  }
+  
+  protected static function ucaseDelimiter($vChar) {
+   return self::getCharCase($vChar) == MB_CASE_UPPER; 
+  }
+  
+  public function customExplode(callback $vDelimiterFunction, $vString) {
+    $pCharArray = str_split($vString, 1);
+    $pElement   = '';
+    $pReturn    = '';
+    
+    foreach($pCharArray as $pChar) {
+      if($vDelimiterFunction($pChar)) {
+        
+      }
+    }
+    
+  }
+  
   public function __construct(
     $vVariableName, $vToggleOrderArray = NULL,
     $vIgnoreSingleLetterScenario = FALSE, $vIgnoreSingleWordScenario = FALSE
   ) {
     
+    self::setIfNull(  $this->_ToggleOrderArray,
+                      $vToggleOrderArray                  );
+    self::setIfNull(  $this->_ignoreSingleLetterScenario,
+                      $vIgnoreSingleLetterScenario        );
+    self::setIfNull(  $this->_ignoreSingleWordScenario,
+                      $vIgnoreSingleWordScenario          );
     
-  
+    //array_walk
   }
   
   // OLD CODE
