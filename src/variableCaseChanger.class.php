@@ -64,16 +64,13 @@ class variableCaseChanger {
   
   protected $_ignoreSingleLetterScenario    = FALSE;
   protected $_ignoreSingleWordScenario      = FALSE;
-  
+  protected $_FirstDeliminerChar            = NULL;
+  protected $_WordArray                     = [];
   
   static function setIfNotNull(&$vParam, $vValue) {
     if(!isnull($vValue)) {
       $vParam = $vValue;
     }
-  }
-  
-  protected static function charDelimiter($vChar) {
-    return in_array($vChar, self::KNOWN_DELIMITER_ARRAY);
   }
   
   static function getCharCase($vChar) {
@@ -89,21 +86,11 @@ class variableCaseChanger {
     return FALSE;
   }
   
-  protected static function ucaseDelimiter($vChar) {
-   return self::getCharCase($vChar) == MB_CASE_UPPER; 
-  }
-  
-  public function customExplode(callback $vDelimiterFunction, $vString) {
-    $pCharArray = str_split($vString, 1);
-    $pElement   = '';
-    $pReturn    = '';
-    
-    foreach($pCharArray as $pChar) {
-      if($vDelimiterFunction($pChar)) {
-        
-      }
-    }
-    
+  /**
+   * http://stackoverflow.com/a/9025946
+   */
+  static function setRef_toEndOfArray(&$vRef, &$vArray) {
+    $vRef = &$vArray[count($vArray) - 1];
   }
   
   public function __construct(
@@ -118,52 +105,41 @@ class variableCaseChanger {
     self::setIfNull(  $this->_ignoreSingleWordScenario,
                       $vIgnoreSingleWordScenario          );
     
-    //array_walk
-  }
-  
-  // OLD CODE
-  static function strposArray($vHaystack, $vNeedleArray = []) {
+    $pCharArray   = str_split($vString, 1);
+    $pDelimArray  = [''];
+    $pCamelArray  = [''];
     
-    foreach($vNeedleArray as $pNeedle) {
-      $pResult = strpos($vHaystack, $pNeedle);
-      if($pResult !== FALSE) { return $pResult; }
-    }
-    
-    return FALSE;
-  }
-
-  static function getAllCharCase($vString) {
-    
-    $pCharArray = str_split($vString, 1);
-    $pCaseArray = [MB_CASE_UPPER, MB_CASE_LOWER];
-    
-    $pReturn = NULL;
+    $pDelimLast   = '';
+    $pCamelLast   = '';
+    self::setRef_toEndOfArray($pDelimLast, $pDelimArray);
+    self::setRef_toEndOfArray($pCamelLast, $pCamelArray);
     
     foreach($pCharArray as $pChar) {
-      $pCharType = self::getCharType($pChar);
       
-      if(!in_array($pCase, $pCharType)) {
-        // Do Nothing
-      } elseif(isnull($pReturn)) {
-        $pReturn = $pCharType;
-      } elseif($pReturn != $pCharType) {
-        return FALSE;
-      }
-    }
-
-  }
-  
-  static function getCharType($vChar) {
-    
-    if(ctype_alpha($vChar)) {
-      if(ctype_upper($vChar)) {
-        return MB_CASE_UPPER;
+      if(in_array(self::KNOWN_DELIMITER_ARRAY, $pChar)) {
+        $pDelimArray[] = '';
+        self::setRef_toEndOfArray($pDelimLast, $pDelimArray);
+        if(isnull($this->_FirstDeliminerChar)) {
+          $this->_FirstDeliminerChar = $pChar;
+        }
       } else {
-        return MB_CASE_LOWER;
+        $pDelimLast .= $pChar;
       }
+      
+      if(self::getCharCase($pChar) == MB_CASE_UPPER) {
+        $pCamelArray[] = '';
+        self::setRef_toEndOfArray($pCamelLast, $pCamelArray);
+      }
+      $pCamelLast .= $pChar;
+      
+    }
+    
+    if(count($pDelimArray) > 1) {
+      // Delimited Array
+    } else {
+      $this->_WordArray = $pCamelArray;
     }
 
-    return FALSE;
   }
   
 }
