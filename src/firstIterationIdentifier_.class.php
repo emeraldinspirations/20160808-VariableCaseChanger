@@ -120,11 +120,11 @@ class firstIterationIdentifier {
    */
   public function iterateValue($vValue = TRUE) {
     
-    if(isnull($vValue)) {
+    if(isnull($vValue) {
       throw new InvalidArgumentException(
         'iterateValue function does not accept NULL as a possible value',
         self::ERROR_CANT_ITERATE_NULL
-      );
+      }
     } elseif($this->isFirst()) {
       $this->_FirstValue = $vValue;
       return $vValue;
@@ -133,15 +133,5 @@ class firstIterationIdentifier {
     return FALSE;
   }
   
-  /**
-   * Resets the class
-   * 
-   * @return  void
-   */
-  public function reset() {
-    
-    $this->_FirstValue = NULL;
-    
-  }
-  
+
 }
