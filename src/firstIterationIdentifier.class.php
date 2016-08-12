@@ -17,7 +17,7 @@
  *    // Actions to do on every iteration
  *  }
  * </code>
- *
+ * 
  * @category   QuickTools
  * @package    20160808-VariableCaseChanger
  * @author     Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
@@ -27,8 +27,11 @@
  */
 class firstIterationIdentifier {
   
+  // {{{ constants
+  
   const ERROR_CANT_ITERATE_NULL = 1470958522;
   
+  // }}}
   // {{{ properties
   
   /**
@@ -39,14 +42,14 @@ class firstIterationIdentifier {
    * @var mixed|null
    * @see self::iterateValue() For the function called to set the value
    */
-  protected $_FirstValue                = NULL;
+  protected $_FirstValue        = NULL;
   
   // }}}
   // {{{ functions
-
+  
   /**
    * Returns if iterateValue has been called
-   *
+   * 
    * This is the main function.  It returns if the iterateValue function had
    * been called before.  It also has an optional parameter to combine
    * the isFirst function with the iterateValue function in a single call.
@@ -62,11 +65,14 @@ class firstIterationIdentifier {
    * @see self::getFirstValue() For the value passed on the first iterateValue
    *                             call
    */
-  public function isFirst($vIterate = FALSE) {
+  public function isFirst( $vIterate = FALSE ) {
+    
     $pReturn = isnull($this->$_FirstValue);
+    
     if($vIterate) {
       $this->iterateValue($vIterate);
     }
+    
     return $pReturn;
   }
   
@@ -86,25 +92,34 @@ class firstIterationIdentifier {
    *                            was called
    */
   public function getFirstValue() {
+    
     return $_FirstValue;
   }
   
   /**
    * Stores the value passed the first time iterateValue is called
-   *
+   * 
    * This function should be called each iteration of a loop.  If a parameter is
    * passed the first time iterateValue is called, that value will be stored.
    * If no value is passed, then the default value of TRUE is passed.
-   *
+   * 
    * Passing FALSE (or any value that casts as FALSE) may cause logic errors in
    * code that does not use the identical comparison operator ( === )
-   *
+   * 
    * Passing NULL throws an exception as it would result in the class not
    * registering that iterateValue had been called
-   *
-   *
+   * 
+   * @param   mixed $vValue the optional value to store if the first iteration.
+   *                        If no value is supplied, TRUE (the default value) is
+   *                        used.
+   * @return  mixed         the value supplied if first iteration.
+   *                        FALSE = Not the first iteration
+   * @access  public
+   * @throws  InvalidArgumentException
+   *                        thrown if NULL is passed
    */
   public function iterateValue($vValue = TRUE) {
+    
     if(isnull($vValue) {
       throw new InvalidArgumentException(
         'iterateValue function does not accept NULL as a possible value',
@@ -114,11 +129,19 @@ class firstIterationIdentifier {
       $this->_FirstValue = $vValue;
       return $vValue;
     }
+    
     return FALSE;
   }
-
+  
+  /**
+   * Resets the class
+   * 
+   * @return  void
+   */
   public function reset() {
+    
     $this->_FirstValue = NULL;
+    
   }
-
+  
 }
