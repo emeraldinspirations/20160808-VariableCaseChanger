@@ -8,6 +8,25 @@ class firstIterationIdentifierTester {
     
     $pSample = new firstIterationIdentifier();
     
+    self::typeTest('Object creation failed', 'firstIterationIdentifier', $pSample);
+    
+    return TRUE;
+  }
+  
+  static function typeTest($vIssue, $vExpected, $vActual) {
+    if(!$vActual instanceof $vExpected) {
+      throw new Exception(
+        'ISSUE:    '.$vIssue."\n".
+        'EXPECTED: '.$vExpected."\n".
+        'ACTUAL:   '.gettype($vActual)
+      );
+    }
+  }
+  
+  function test_isFirst() {
+    $pInstance = new firstIterationIdentifier();
+    
+    
   }
   
   static function runTests() {
@@ -29,6 +48,8 @@ class firstIterationIdentifierTester {
       
       if($pResult === TRUE) {
         echo 'Test '.$pFunction.'() PASSED'."\n";
+      } elseif ($pResult instanceof Exception) {
+        echo 'Test '.$pFunction.'() ERROR'."\n".$pResult->getMessage()."\n";
       } else {
         echo 'Test '.$pFunction.'() FAILED'."\n";
       }
