@@ -67,7 +67,7 @@ class firstIterationIdentifier {
    */
   public function isFirst( $vIterate = FALSE ) {
     
-    $pReturn = isnull($this->$_FirstValue);
+    $pReturn = ! isset($this->_FirstValue);
     
     if($vIterate) {
       $this->iterateValue($vIterate);
@@ -120,7 +120,7 @@ class firstIterationIdentifier {
    */
   public function iterateValue($vValue = TRUE) {
     
-    if(isnull($vValue)) {
+    if(is_null($vValue)) {
       throw new InvalidArgumentException(
         'iterateValue function does not accept NULL as a possible value',
         self::ERROR_CANT_ITERATE_NULL

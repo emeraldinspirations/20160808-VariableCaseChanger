@@ -26,7 +26,44 @@ class firstIterationIdentifierTester {
   function test_isFirst() {
     $pInstance = new firstIterationIdentifier();
     
+    for($x=0;$x<10;$x++) {
+      $pTestValue = $pInstance->isFirst();
+      if( $pTestValue !== TRUE ) {
+        throw new Exception (
+          'ISSUE:    Pre-Mature iteration'."\n".
+          'EXPECTED: TRUE'."\n".
+          'ACTUAL:   '.var_export($pTestValue, true)
+        );
+      }
+    }
     
+    $pTestValue = $pInstance->isFirst( TRUE );
+    if( $pTestValue !== TRUE ) {
+      throw new Exception (
+        'ISSUE:    Pre-Mature isteration, when iterate set TRUE'."\n".
+        'EXPECTED: TRUE'."\n".
+        'ACTUAL:   '.var_export($pTestValue, true)
+      );
+    }
+    
+    for($x=0;$x<10;$x++) {
+      $pTestValue = $pInstance->isFirst( 'A' );
+      if( $pTestValue === TRUE ) {
+        throw new Exception (
+          'ISSUE:    Iteration not retained'."\n".
+          'EXPECTED: FALSE'."\n".
+          'ACTUAL:   '.var_export($pTestValue, true)
+        );
+      } elseif ( $pTestValue !== FALSE ) {
+        throw new Exception (
+          'ISSUE:    Future iterations override existing'."\n".
+          'EXPECTED: FALSE'."\n".
+          'ACTUAL:   '.var_export($pTestValue, true)
+        );
+      }
+    }
+    
+    return TRUE;
   }
   
   static function runTests() {
