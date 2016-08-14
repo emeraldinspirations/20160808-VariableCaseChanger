@@ -66,6 +66,61 @@ class firstIterationIdentifierTester {
     return TRUE;
   }
   
+  public function test_getFirstValue() {
+    $pInstance = new firstIterationIdentifier();
+    
+    $pTestValue = $pInstance->getFirstValue();
+    if( ! is_null($pTestValue) ) {
+      throw new Exception (
+        'ISSUE:    Pre-Mature iteration'."\n".
+        'EXPECTED: NULL'."\n".
+        'ACTUAL:   '.var_export($pTestValue, true)
+      );
+    }
+    
+    $pInstance->iterateValue('A');
+    $pTestValue = $pInstance->getFirstValue();
+    if( $pTestValue != 'A' ) {
+      throw new Exception (
+        'ISSUE:    Iteration not retained'."\n".
+        'EXPECTED: A'."\n".
+        'ACTUAL:   '.var_export($pTestValue, true)
+      );
+    }
+    
+    $pInstance->iterateValue('B');
+    $pTestValue = $pInstance->getFirstValue();
+    if( $pTestValue != 'A' ) {
+      throw new Exception (
+        'ISSUE:    Future iterations override existing'."\n".
+        'EXPECTED: A'."\n".
+        'ACTUAL:   '.var_export($pTestValue, true)
+      );
+    }
+    
+    return TRUE;
+  }
+  
+  public function test_reset() {
+    $pInstance = new firstIterationIdentifier();
+    
+    $pInstance->iterateValue('A');
+    $pInstance->iterateValue('B');
+    $pInstance->reset();
+    $pInstance->iterateValue('C');
+    $pInstance->iterateValue('D');
+    $pTestValue = $pInstance->getFirstValue();
+    if( $pTestValue != 'C' ) {
+      throw new Exception (
+        'ISSUE:    Reset Failed'."\n".
+        'EXPECTED: C'."\n".
+        'ACTUAL:   '.var_export($pTestValue, true)
+      );
+    }
+    
+    return TRUE;
+  }
+  
   static function runTests() {
     $pTesterClass = new firstIterationIdentifierTester();
     $pFunctions   = get_class_methods('firstIterationIdentifierTester');

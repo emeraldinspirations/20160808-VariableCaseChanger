@@ -93,7 +93,7 @@ class firstIterationIdentifier {
    */
   public function getFirstValue() {
     
-    return $_FirstValue;
+    return $this->_FirstValue;
   }
   
   /**
