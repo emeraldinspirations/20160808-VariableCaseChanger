@@ -14,7 +14,7 @@ class wordArrayBuilder {
   }
   
   public function resetBuffer() {
-    
+    $this->_Buffer = '';
   }
   
   public function pushBuffer() {

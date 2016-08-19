@@ -33,6 +33,32 @@ class wordArrayBuilderTester extends classTester {
     return TRUE;
   }
   
+  public function test_resetBuffer() {
+    $pInstance = new wordArrayBuilder();
+    
+    $pInstance->concatenateBuffer('TestContents');
+    $pBuffer = $pInstance->getBuffer();
+    if($pBuffer != 'TestContents') {
+      throw new Exception(
+        'ISSUE:     Concatination failed'."\n" .
+        'EXPECTED:  \'TestContents\''."\n" .
+        'ACTUAL:    '.var_export($pBuffer, TRUE)
+      );
+    }
+    
+    $pInstance->resetBuffer();
+    $pBuffer = $pInstance->getBuffer();
+    if($pBuffer !== '') {
+      throw new Exception(
+        'ISSUE:     Buffer not empty after reset'."\n" .
+        'EXPECTED:  \'\''."\n" .
+        'ACTUAL:    '.var_export($pBuffer, TRUE)
+      );
+    }
+    
+    return TRUE;
+  }
+  
   static function runTests() {
     self::_runTests(__class__);
   }
