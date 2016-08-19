@@ -1,12 +1,23 @@
 <?php
 
-class {
+class wordArrayBuilder {
+  
+  protected $_Buffer  = '';
+  protected $_Array   = [];
 
-  function append($vValue) {
+  public function concatenateBuffer($vValue) {
     
   }
   
-  function push() {
+  public function getBuffer() {
+    
+  }
+  
+  public function resetBuffer() {
+    
+  }
+  
+  public function pushBuffer() {
     
   }
   
