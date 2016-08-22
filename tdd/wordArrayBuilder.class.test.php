@@ -59,6 +59,45 @@ class wordArrayBuilderTester extends classTester {
     return TRUE;
   }
   
+  static function array_xor($pArray1, $pArray2) {
+    return array_merge(
+            array_diff($pArray1, $pArray2),
+            array_diff($pArray2, $pArray1)
+    );
+  }
+  
+  public function test_pushBuffer() {
+    $pInstance = new wordArrayBuilder();
+    
+    $pArray = $pInstance->toArray();
+    if(!is_array($pArray)) {
+      throw new Exception(
+        'ISSUE:     Array not returned on toArray'."\n".
+        'EXPECTED:  []'."\n".
+        'ACTUAL:    '.  var_export($pArray, TRUE)
+      );
+    }
+    
+    $pInstance->concatenateBuffer('Entry1');
+    $pInstance->pushBuffer();
+    $pInstance->concatenateBuffer('Entry2');
+    $pInstance->pushBuffer();
+    $pInstance->concatenateBuffer('Entry3');
+    $pInstance->pushBuffer();
+    $pActual    = $pInstance->toArray();
+    $pExpected  = ['Entry1','Entry2','Entry3'];
+    
+    if(count(self::array_xor($pActual, $pExpected))) {
+      throw new Exception(
+        'ISSUE:     Array not populated correctly'."\n".
+        'EXPECTED:  '.  var_export($pExpected, TRUE)."\n".
+        'ACTUAL:    '.  var_export($pActual, TRUE)
+      );
+    }
+    
+    return TRUE;
+  }
+  
   static function runTests() {
     self::_runTests(__class__);
   }
