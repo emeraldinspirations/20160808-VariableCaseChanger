@@ -1,2 +1,3 @@
 # Ignore nano temp files
 .*.swp
+/nbproject/
