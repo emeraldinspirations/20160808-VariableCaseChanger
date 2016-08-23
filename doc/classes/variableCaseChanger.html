@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>20160808-VariableCaseChanger</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">20160808-VariableCaseChanger</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">20</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2145550466"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-2145550466" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/firstIterationIdentifier.html">firstIterationIdentifier</a></li>
+                                                    <li class="class"><a href="../classes/variableCaseChanger.html">variableCaseChanger</a></li>
+                                                    <li class="class"><a href="../classes/wordArrayBuilder.html">wordArrayBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>variableCaseChanger</h1>
+                    <p><em>This function will accept a variable name as it&#039;s construct parameter.  It
+ will then determine what nameing convention is used, and output the next
+ convention, in sequence, from the list of supplied conventions.</em></p>
+                    <p>The class will first determine if any known delimiter charictar is present.
+All delimiter charichtars are treated as equal, but the first is used as the
+&quot;current&quot;, this follows the Robustness Principle: &quot;Be conservative in what
+you do, be libral in what you accept from others.&quot;</p>
+<p>When no known delimiter charictar is present, the class will then look for
+mixed case.  Each capital letter following the first charichtar is treeted
+as a new word.  The exception being when all charictars are capital.</p>
+<p>When all charictars are capital, and no known delimiter charicters are
+present, then an ambiguity has been introduced.  Either there is only one
+word, or all the words are one letter long.  Since the later is extremely
+unlikely, and would probubly causes undesired and problematic results, the
+class assumes that it is a single word.  Unless the
+IGNORE_SINGLE_LETTER_SCENARIO (I) flag is supplied.</p>
+<p>Once the variable name is decoded, it is outputed in either the supplied
+convention, or the next in the list of supplied conventions.  When no
+conventions are supplied the default list of conventions is used.</p>
+<p>The default list of conventions is:</p>
+<ul>
+<li>camelCaseA          (c)</li>
+<li>CamelCaseB          (C)</li>
+<li>ALL_CAPS_UNDERSCORE (U)</li>
+<li>no_caps_underscore  (u)</li>
+<li>ALL-CAPS-HYPHEN     (H)</li>
+<li>no-caps-hyphen      (h)</li>
+</ul>
+<p>For single word variable names, unless the IGNORE_SINGLE_WORD_SCENARIO (i)
+flag is passed, the list becomes</p>
+<ul>
+<li>ALLCAPS</li>
+<li>alllower</li>
+<li>Camel</li>
+</ul>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/variableCaseChanger.html#method_setIfNotNull" class="">setIfNotNull()</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#method_getCharCase" class="">getCharCase()</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#method_setRef_toEndOfArray" class="">setRef_toEndOfArray()</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#method___construct" class="">__construct()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/variableCaseChanger.html#property_KNOWN_DELIMITER_ARRAY" class="">$KNOWN_DELIMITER_ARRAY</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_CAMEL_CASE_A" class="">CONV_CAMEL_CASE_A</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_CAMEL_CASE_B" class="">CONV_CAMEL_CASE_B</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_ALL_CAPS_UNDERSCORE" class="">CONV_ALL_CAPS_UNDERSCORE</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_NO_CAPS_UNDERSCORE" class="">CONV_NO_CAPS_UNDERSCORE</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_ALL_CAPS_HYPHEN" class="">CONV_ALL_CAPS_HYPHEN</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_CONV_NO_CAPS_HYPHEN" class="">CONV_NO_CAPS_HYPHEN</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_FLAG_IGNORE_SINGLE_LETTER_SCENARIO" class="">FLAG_IGNORE_SINGLE_LETTER_SCENARIO</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#constant_FLAG_IGNORE_SINGLE_WORD_SCENARIO" class="">FLAG_IGNORE_SINGLE_WORD_SCENARIO</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/variableCaseChanger.html#property__ToggleOrderArray" class="">$_ToggleOrderArray</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#property__ignoreSingleLetterScenario" class="">$_ignoreSingleLetterScenario</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#property__ignoreSingleWordScenario" class="">$_ignoreSingleWordScenario</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#property__FirstDeliminerChar" class="">$_FirstDeliminerChar</a><br />
+                                                                    <a href="../classes/variableCaseChanger.html#property__WordArray" class="">$_WordArray</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/variableCaseChanger.class.html"><div class="path-wrapper">variableCaseChanger.class.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\variableCaseChanger</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_CAMEL_CASE_A" name="constant_CONV_CAMEL_CASE_A" class="anchor"></a>
+            <article id="constant_CONV_CAMEL_CASE_A" class="constant">
+                <h3 class="">CONV_CAMEL_CASE_A</h3>
+                <pre class="signature">CONV_CAMEL_CASE_A</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_CAMEL_CASE_B" name="constant_CONV_CAMEL_CASE_B" class="anchor"></a>
+            <article id="constant_CONV_CAMEL_CASE_B" class="constant">
+                <h3 class="">CONV_CAMEL_CASE_B</h3>
+                <pre class="signature">CONV_CAMEL_CASE_B</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_ALL_CAPS_UNDERSCORE" name="constant_CONV_ALL_CAPS_UNDERSCORE" class="anchor"></a>
+            <article id="constant_CONV_ALL_CAPS_UNDERSCORE" class="constant">
+                <h3 class="">CONV_ALL_CAPS_UNDERSCORE</h3>
+                <pre class="signature">CONV_ALL_CAPS_UNDERSCORE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_NO_CAPS_UNDERSCORE" name="constant_CONV_NO_CAPS_UNDERSCORE" class="anchor"></a>
+            <article id="constant_CONV_NO_CAPS_UNDERSCORE" class="constant">
+                <h3 class="">CONV_NO_CAPS_UNDERSCORE</h3>
+                <pre class="signature">CONV_NO_CAPS_UNDERSCORE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_ALL_CAPS_HYPHEN" name="constant_CONV_ALL_CAPS_HYPHEN" class="anchor"></a>
+            <article id="constant_CONV_ALL_CAPS_HYPHEN" class="constant">
+                <h3 class="">CONV_ALL_CAPS_HYPHEN</h3>
+                <pre class="signature">CONV_ALL_CAPS_HYPHEN</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONV_NO_CAPS_HYPHEN" name="constant_CONV_NO_CAPS_HYPHEN" class="anchor"></a>
+            <article id="constant_CONV_NO_CAPS_HYPHEN" class="constant">
+                <h3 class="">CONV_NO_CAPS_HYPHEN</h3>
+                <pre class="signature">CONV_NO_CAPS_HYPHEN</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FLAG_IGNORE_SINGLE_LETTER_SCENARIO" name="constant_FLAG_IGNORE_SINGLE_LETTER_SCENARIO" class="anchor"></a>
+            <article id="constant_FLAG_IGNORE_SINGLE_LETTER_SCENARIO" class="constant">
+                <h3 class="">FLAG_IGNORE_SINGLE_LETTER_SCENARIO</h3>
+                <pre class="signature">FLAG_IGNORE_SINGLE_LETTER_SCENARIO</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FLAG_IGNORE_SINGLE_WORD_SCENARIO" name="constant_FLAG_IGNORE_SINGLE_WORD_SCENARIO" class="anchor"></a>
+            <article id="constant_FLAG_IGNORE_SINGLE_WORD_SCENARIO" class="constant">
+                <h3 class="">FLAG_IGNORE_SINGLE_WORD_SCENARIO</h3>
+                <pre class="signature">FLAG_IGNORE_SINGLE_WORD_SCENARIO</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_KNOWN_DELIMITER_ARRAY" name="property_KNOWN_DELIMITER_ARRAY" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$KNOWN_DELIMITER_ARRAY</h3>
+                <pre class="signature">$KNOWN_DELIMITER_ARRAY : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__ToggleOrderArray" name="property__ToggleOrderArray" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_ToggleOrderArray</h3>
+                <pre class="signature">$_ToggleOrderArray : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__ignoreSingleLetterScenario" name="property__ignoreSingleLetterScenario" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_ignoreSingleLetterScenario</h3>
+                <pre class="signature">$_ignoreSingleLetterScenario : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__ignoreSingleWordScenario" name="property__ignoreSingleWordScenario" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_ignoreSingleWordScenario</h3>
+                <pre class="signature">$_ignoreSingleWordScenario : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__FirstDeliminerChar" name="property__FirstDeliminerChar" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_FirstDeliminerChar</h3>
+                <pre class="signature">$_FirstDeliminerChar : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__WordArray" name="property__WordArray" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_WordArray</h3>
+                <pre class="signature">$_WordArray : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setIfNotNull" name="method_setIfNotNull" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setIfNotNull()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setIfNotNull(  <span class="argument">$vParam</span>,   <span class="argument">$vValue</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vParam </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vValue </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCharCase" name="method_getCharCase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCharCase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCharCase(  <span class="argument">$vChar</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vChar </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRef_toEndOfArray" name="method_setRef_toEndOfArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRef_toEndOfArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRef_toEndOfArray(  <span class="argument">$vRef</span>,   <span class="argument">$vArray</span>) </pre>
+                <p><em>http://stackoverflow.com/a/9025946</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vRef </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vArray </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(  <span class="argument">$vVariableName</span>,   <span class="argument">$vToggleOrderArray = NULL</span>,   <span class="argument">$vIgnoreSingleLetterScenario = FALSE</span>,   <span class="argument">$vIgnoreSingleWordScenario = FALSE</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vVariableName </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vToggleOrderArray </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vIgnoreSingleLetterScenario </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vIgnoreSingleWordScenario </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">variableCaseChanger.class.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/variableCaseChanger.class.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 23rd, 2016 at 10:08.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
