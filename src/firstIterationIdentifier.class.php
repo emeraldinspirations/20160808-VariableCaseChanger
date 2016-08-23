@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * A file to store class firstIterationIdentifier
+ * 
+ * @category    QuickTools
+ * @package     20160808-VariableCaseChanger
+ * @author      Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+ * @copyright   2016 Matthew "Juniper" Barlett
+ * @license     MIT
+ * @link        ../../LICENSE License
+ */
+
+/**
  * A quick way to determine the first iteration of a loop
  * 
  * This class is used in a loop oporation to track if it is the first iteration
@@ -17,12 +28,7 @@
  *    // Actions to do on every iteration
  *  }
  * </code>
- * 
- * @category   QuickTools
- * @package    20160808-VariableCaseChanger
- * @author     Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
- * @copyright  2016 Matthew "Juniper" Barlett
- * @license    TBD - Draft
+
  * @version    GIT: $Id$ In development.
  */
 class firstIterationIdentifier {
