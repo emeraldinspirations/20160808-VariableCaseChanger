@@ -133,6 +133,18 @@ class wordArrayBuilder {
     return $this->_Array;
   }
   
+  /**
+   * Returns the number of pushes in the array
+   * 
+   * @return integer
+   * @access public
+   */
+  public function count() {
+    
+    return count($this->_Array);
+    
+  }
+  
   // }}}
 
 }
