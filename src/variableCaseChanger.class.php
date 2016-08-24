@@ -2,42 +2,42 @@
 
 /**
  * This function will accept a variable name as it's construct parameter.  It
- *  will then determine what nameing convention is used, and output the next
- *  convention, in sequence, from the list of supplied conventions.
+ * will then determine what naming convention is used, and output the next
+ * convention, in sequence, from the list of supplied conventions.
  * 
- * The class will first determine if any known delimiter charictar is present.
- *  All delimiter charichtars are treated as equal, but the first is used as the
- *  "current", this follows the Robustness Principle: "Be conservative in what
- *  you do, be libral in what you accept from others."
+ * The class will first determine if any known delimiter character is present.
+ * All delimiter characters are treated as equal, but the first is used as the
+ * "current", this follows the Robustness Principle: "Be conservative in what
+ * you do, be liberal in what you accept from others."
  * 
- * When no known delimiter charictar is present, the class will then look for
- *  mixed case.  Each capital letter following the first charichtar is treeted
- *  as a new word.  The exception being when all charictars are capital.
+ * When no known delimiter character is present, the class will then look for
+ * mixed case.  Each capital letter following the first character is treated
+ * as a new word.  The exception being when all characters are capital.
  * 
- * When all charictars are capital, and no known delimiter charicters are
- *  present, then an ambiguity has been introduced.  Either there is only one
- *  word, or all the words are one letter long.  Since the later is extremely
- *  unlikely, and would probubly causes undesired and problematic results, the
- *  class assumes that it is a single word.  Unless the
- *  IGNORE_SINGLE_LETTER_SCENARIO (I) flag is supplied.
+ * When all characters are capital, and no known delimiter characters are
+ * present, then an ambiguity has been introduced.  Either there is only one
+ * word, or all the words are one letter long.  Since the later is extremely
+ * unlikely, and would probably causes undesired and problematic results, the
+ * class assumes that it is a single word.  Unless the
+ * IGNORE_SINGLE_LETTER_SCENARIO (I) flag is supplied.
  * 
- * Once the variable name is decoded, it is outputed in either the supplied
- *  convention, or the next in the list of supplied conventions.  When no
- *  conventions are supplied the default list of conventions is used.
+ * Once the variable name is decoded, it is outputted in either the supplied
+ * convention, or the next in the list of supplied conventions.  When no
+ * conventions are supplied the default list of conventions is used.
  * 
  * The default list of conventions is:
- *  - camelCaseA          (c)
- *  - CamelCaseB          (C)
- *  - ALL_CAPS_UNDERSCORE (U)
- *  - no_caps_underscore  (u)
- *  - ALL-CAPS-HYPHEN     (H)
- *  - no-caps-hyphen      (h)
+ * - camelCaseA          (c)
+ * - CamelCaseB          (C)
+ * - ALL_CAPS_UNDERSCORE (U)
+ * - no_caps_underscore  (u)
+ * - ALL-CAPS-HYPHEN     (H)
+ * - no-caps-hyphen      (h)
  * 
  * For single word variable names, unless the IGNORE_SINGLE_WORD_SCENARIO (i)
- *  flag is passed, the list becomes
- *  - ALLCAPS
- *  - alllower
- *  - Camel
+ * flag is passed, the list becomes
+ * - ALLCAPS
+ * - alllower
+ * - Camel
  */
 class variableCaseChanger {
   
@@ -50,7 +50,6 @@ class variableCaseChanger {
   const FLAG_IGNORE_SINGLE_LETTER_SCENARIO  = 'I';
   const FLAG_IGNORE_SINGLE_WORD_SCENARIO    = 'i';
 
-  
   static $KNOWN_DELIMITER_ARRAY             = ['_', '-'];
   
   protected $_ToggleOrderArray              = [
@@ -106,38 +105,31 @@ class variableCaseChanger {
                       $vIgnoreSingleWordScenario          );
     
     $pCharArray   = str_split($vString, 1);
-    $pDelimArray  = [''];
-    $pCamelArray  = [''];
-    
-    $pDelimLast   = '';
-    $pCamelLast   = '';
-    self::setRef_toEndOfArray($pDelimLast, $pDelimArray);
-    self::setRef_toEndOfArray($pCamelLast, $pCamelArray);
+    $pDelimArray  = new wordArrayBuilder();
+    $pCamelArray  = new wordArrayBuilder();
+    $pFirstDelim  = new firstIterationIdentifier();
     
     foreach($pCharArray as $pChar) {
       
       if(in_array(self::KNOWN_DELIMITER_ARRAY, $pChar)) {
-        $pDelimArray[] = '';
-        self::setRef_toEndOfArray($pDelimLast, $pDelimArray);
-        if(isnull($this->_FirstDeliminerChar)) {
-          $this->_FirstDeliminerChar = $pChar;
-        }
+        $pDelimArray->pushBuffer();
+        $pFirstDelim->iterateValue($pChar);
       } else {
-        $pDelimLast .= $pChar;
+        $pDelimArray->concatenateBuffer($pChar);
       }
       
       if(self::getCharCase($pChar) == MB_CASE_UPPER) {
-        $pCamelArray[] = '';
-        self::setRef_toEndOfArray($pCamelLast, $pCamelArray);
+        $pCamelArray->pushBuffer();
       }
-      $pCamelLast .= $pChar;
+      $pCamelArray->concatenateBuffer($pChar);
       
     }
     
-    if(count($pDelimArray) > 1) {
-      // Delimited Array
+    if($pDelimArray->count() > 1) {
+      $this->_WordArray           = $pDelimArray->toArray();
+      $this->_FirstDeliminerChar  = $pFirstDelim->getFirstValue();
     } else {
-      $this->_WordArray = $pCamelArray;
+      $this->_WordArray           = $pCamelArray;
     }
 
   }
