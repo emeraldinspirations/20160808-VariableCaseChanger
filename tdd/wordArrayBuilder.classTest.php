@@ -96,4 +96,40 @@ class wordArrayBuilderTest extends PHPUnit_Framework_TestCase {
     
   }
 
+  /**
+   * @covers wordArrayBuilder::count
+   */
+  public function testCount() {
+    
+    $this->assertNotNull(
+            $this->object->count(),
+            'Count returns null'
+            );
+    
+    $this->assertEquals(
+            0,
+            $this->object->count(),
+            'Count not correct at initialize');
+    
+    $this->object->pushBuffer();
+    $this->object->pushBuffer();
+    $this->object->pushBuffer();
+    
+    $this->assertEquals(
+            3,
+            $this->object->count(),
+            'Count not correct after 3 pushes');
+    
+    $this->object->pushBuffer();
+    $this->object->pushBuffer();
+    $this->object->pushBuffer();
+    $this->object->pushBuffer();
+    
+    $this->assertEquals(
+            7,
+            $this->object->count(),
+            'Count not correct after 7 pushes');
+    
+  }
+  
 }
