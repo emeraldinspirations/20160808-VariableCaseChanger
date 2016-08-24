@@ -53,24 +53,18 @@ class variableCaseChanger {
   static $KNOWN_DELIMITER_ARRAY             = ['_', '-'];
   
   protected $_ToggleOrderArray              = [
-    CONV_CAMEL_CASE_A,
-    CONV_CAMEL_CASE_B,
-    CONV_ALL_CAPS_UNDERSCORE,
-    CONV_NO_CAPS_UNDERSCORE,
-    CONV_ALL_CAPS_HYPHEN,
-    CONV_NO_CAPS_HYPHEN
+    self::CONV_CAMEL_CASE_A,
+    self::CONV_CAMEL_CASE_B,
+    self::CONV_ALL_CAPS_UNDERSCORE,
+    self::CONV_NO_CAPS_UNDERSCORE,
+    self::CONV_ALL_CAPS_HYPHEN,
+    self::CONV_NO_CAPS_HYPHEN
   ];
   
   protected $_ignoreSingleLetterScenario    = FALSE;
   protected $_ignoreSingleWordScenario      = FALSE;
   protected $_FirstDeliminerChar            = NULL;
   protected $_WordArray                     = [];
-  
-  static function setIfNotNull(&$vParam, $vValue) {
-    if(!isnull($vValue)) {
-      $vParam = $vValue;
-    }
-  }
   
   static function getCharCase($vChar) {
     
@@ -92,19 +86,30 @@ class variableCaseChanger {
     $vRef = &$vArray[count($vArray) - 1];
   }
   
+  static function fromWordArray(array $vWordArray) {
+    $pReturn = new variableCaseChanger();
+    $pReturn->_WordArray = $vWordArray;
+    return $pReturn;
+  }
+  
+  public function getWordArray() {
+    
+  }
+  
+  /*
   public function __construct(
     $vVariableName, $vToggleOrderArray = NULL,
     $vIgnoreSingleLetterScenario = FALSE, $vIgnoreSingleWordScenario = FALSE
   ) {
     
-    self::setIfNull(  $this->_ToggleOrderArray,
-                      $vToggleOrderArray                  );
-    self::setIfNull(  $this->_ignoreSingleLetterScenario,
-                      $vIgnoreSingleLetterScenario        );
-    self::setIfNull(  $this->_ignoreSingleWordScenario,
-                      $vIgnoreSingleWordScenario          );
+    $this->_ToggleOrderArray = ( isset($vToggleOrderArray) 
+            ? $vToggleOrderArray 
+            : $this->_ToggleOrderArray );
     
-    $pCharArray   = str_split($vString, 1);
+    $this->_ignoreSingleLetterScenario  = $vIgnoreSingleLetterScenario;
+    $this->_ignoreSingleWordScenario    = $vIgnoreSingleWordScenario;
+    
+    $pCharArray   = str_split($vVariableName, 1);
     $pDelimArray  = new wordArrayBuilder();
     $pCamelArray  = new wordArrayBuilder();
     $pFirstDelim  = new firstIterationIdentifier();
@@ -133,5 +138,5 @@ class variableCaseChanger {
     }
 
   }
-  
+  */
 }
