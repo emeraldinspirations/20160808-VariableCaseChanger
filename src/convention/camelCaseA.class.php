@@ -5,18 +5,11 @@
  *
  * @author emeraldinspirations
  */
-class camelCaseA implements iConvention {
- 
-  protected $_WordArray = [];
-  
-  static function fromWordArray(array $vWordArray) {
-    $pReturn = new camelCaseA();
-    $pReturn->_WordArray = $vWordArray;
-    return $pReturn;
-  }
+class camelCaseA extends convention {
   
   public function toString() {
     
   }
 
 }
+echo 'Got Here!';
