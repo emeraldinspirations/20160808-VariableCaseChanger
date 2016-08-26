@@ -5,7 +5,7 @@
  *
  * @author emeraldinspirations
  */
-abstract class convention {
+trait tConvention {
  
   protected $_WordArray = [];
   

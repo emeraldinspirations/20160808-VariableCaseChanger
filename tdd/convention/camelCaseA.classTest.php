@@ -1,6 +1,6 @@
 <?php
 
-include_once '../src/convention/convention.class.php';
+include_once '../src/convention/tConvention.trait.php';
 include_once '../src/convention/camelCaseA.class.php';
 
 /**
@@ -35,6 +35,9 @@ class camelCaseATest extends PHPUnit_Framework_TestCase {
             'camelCaseA',
             $this->object,
             'new self() loaded base class');
+    print_r(
+      class_uses($this->object)
+    );
   }
 
   /**

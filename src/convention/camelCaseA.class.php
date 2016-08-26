@@ -5,11 +5,11 @@
  *
  * @author emeraldinspirations
  */
-class camelCaseA extends convention {
+class camelCaseA {
+  use tConvention;
   
   public function toString() {
     
   }
 
 }
-echo 'Got Here!';
